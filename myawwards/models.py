@@ -18,35 +18,35 @@ class Profile(models.Model):
     def delete_profile(self):
         self.delete()
 
-# class Project(models.Model):
-#     title = models.CharField(max_length=155)
-#     description = models.TextField(max_length=255)
-#     photo = models.ImageField(upload_to='pics/')
-#     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="project")
-#     link =  models.URLField(max_length=200)
-#     design = models.IntegerField(choices=list(zip(range(0,11), range(0,11))), default=0)
-#     usability = models.IntegerField(choices=list(zip(range(0,11), range(0,11))), default=0)
-#     content = models.IntegerField(choices=list(zip(range(0,11), range(0,11))), default=0)
-#     vote_submissions = models.IntegerField(default=0)
+class Project(models.Model):
+    title = models.CharField(max_length=155)
+    description = models.TextField(max_length=255)
+    photo = models.ImageField(upload_to='pics/')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="project")
+    link =  models.URLField(max_length=200)
+    design = models.IntegerField(choices=list(zip(range(0,11), range(0,11))), default=0)
+    usability = models.IntegerField(choices=list(zip(range(0,11), range(0,11))), default=0)
+    content = models.IntegerField(choices=list(zip(range(0,11), range(0,11))), default=0)
+    vote_submissions = models.IntegerField(default=0)
 
     
 
-#     def __str__(self):
-#         return f'{self.title}'
-#     def save_project(self):
-#         self.save()
+    def __str__(self):
+        return f'{self.title}'
+    def save_project(self):
+        self.save()
 
-#     def delete_project(self):
-#         self.delete() 
+    def delete_project(self):
+        self.delete() 
 
-#     @classmethod
-#     def search_by_title(cls,search_term):
-#         projects = cls.objects.filter(title__icontains=search_term)
-#         return projects
-#     @classmethod
-#     def get_all_images(cls):
-#         images=cls.objects.all().prefetch_related('comment_set')
-#         return images
+    @classmethod
+    def search_by_title(cls,search_term):
+        projects = cls.objects.filter(title__icontains=search_term)
+        return projects
+    @classmethod
+    def get_all_images(cls):
+        images=cls.objects.all().prefetch_related('comment_set')
+        return images
 
 # class Comment(models.Model):
 #     posted_by=models.ForeignKey(User, on_delete=models.CASCADE,null=True)

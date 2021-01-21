@@ -13,4 +13,12 @@ class ProfileTestClass(TestCase):
     def test_instance(self):
         self.assertTrue(isinstance(self.coco,Profile))
 
-  
+# Testing Save Method
+    def test_save_method(self):
+        self.coco.save_profile()
+        coco = Profile.objects.all()
+        self.assertTrue(len(coco) > 0)
+
+    def tearDown(self):
+        Profile.objects.all().delete()
+        

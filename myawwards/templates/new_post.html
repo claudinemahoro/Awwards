@@ -1,0 +1,32 @@
+{% load bootstrap3 %} {% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>New Post</title>
+  {{form.media}}
+
+{% block styles %} {% bootstrap_css %}
+  <link rel="stylesheet" href="{% static 'css/basenews.css' %}"> {% endblock %}
+
+</head>
+<div class="container">
+<body style="background-color:transparent; background-image: url(https://images.unsplash.com/photo-1605898011598-c5bbcf126cc5?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mjk4fHxwcm9qZWN0JTIwcHJlc2VudGF0aW9ufGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60);background-repeat: no-repeat;background-size: cover; ">
+
+  <form  action="{%url 'new-post'%}" method="post" enctype="multipart/form-data">
+    {%csrf_token%}
+
+    {% bootstrap_form form%}
+    <input type="submit" class="btn btn-success btn-lg" value="Post">
+  </form>
+
+   {% block scripts %}
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  {% bootstrap_javascript %} {% endblock %}
+
+</body>
+</div>
+</html>

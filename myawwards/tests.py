@@ -31,4 +31,12 @@ class ProjectTestClass(TestCase):
     def test_instance(self):
         self.assertTrue(isinstance(self.delani,Project))
 
+    # Testing Save Method
+    def test_save_method(self):
+        self.delani.save_project()
+        delani = Project.objects.all()
+        self.assertTrue(len(delani) > 0)
+
+    def tearDown(self):
+        Project.objects.all().delete()
 

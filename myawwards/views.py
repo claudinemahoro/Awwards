@@ -114,3 +114,9 @@ def add_comment(request,project_id):
         form=CommentForm()
     return render(request,'comment.html',{"form":form,"project_id":project_id})
 
+class ProfileList(APIView):
+    def get(self, request, format=None):
+        all_users = Profile.objects.all()
+        serializers = ProfileSerializer(all_users, many=True)
+        return Response(serializers.data)
+

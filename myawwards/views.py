@@ -17,3 +17,17 @@ def welcome(request):
     return render(request, 'welcome.html',{"projects":projects})
 
 @login_required(login_url='/accounts/login/')
+def new_post(request):
+    current_user = request.user
+    if request.method == 'POST':
+        form = ProjectForm(request.POST, request.FILES)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.user = current_user
+            post.save()
+        return redirect('welcome')
+
+    else:
+        form = ProjectForm()
+    return render(request, 'new_post.html', {"form": form})
+

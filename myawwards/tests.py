@@ -22,3 +22,13 @@ class ProfileTestClass(TestCase):
     def tearDown(self):
         Profile.objects.all().delete()
         
+
+class ProjectTestClass(TestCase):
+    def setUp(self):
+        self.delani = Project( title  = 'delani', description = 'my tests', photo = '/',  link = 'github.com', design='5', usability ='6', content = '7',vote_submissions= '7')
+
+# Testing  instance
+    def test_instance(self):
+        self.assertTrue(isinstance(self.delani,Project))
+
+

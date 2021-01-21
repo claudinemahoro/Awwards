@@ -101,8 +101,6 @@ def add_comment(request,project_id):
     current_user=request.user
     if request.method=='POST':
         image_item=Project.objects.filter(id=project_id).first()
-
-    
         form=CommentForm(request.POST,request.FILES)
         if form.is_valid():
             comment=form.save(commit=False)

@@ -8,3 +8,8 @@ class ProfileForm(forms.ModelForm):
         fields=['bio','profile_picture'] 
         exclude=['user','projects','contact']  
 
+class ProjectForm(forms.ModelForm):
+    class Meta:
+        model = Project
+        exclude = ['user','design','usability','content','vote_submissions']
+

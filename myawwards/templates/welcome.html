@@ -31,7 +31,7 @@ h1
   {% for news_item in projects %}
 
     <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-      <div class="thumbnail" style="background-color: #f4f7f6;">
+      <div class="card wrapper" style="background-color: #f4f7f6;">
         {% if news_item.photo %}
         <img src="{{news_item.photo.url}}" class="img-responsive" >  
         {% endif %}
@@ -40,11 +40,11 @@ h1
         <br>
         <hr>
         {% for com in news_item.comment_set.all %}
-        <p>{{com.comment}}</p>
+        <p class="text-center">{{com.comment}}</p>
         {% empty %}
         {% endfor %} 
         <br> <br>
-        <div class="row">
+        <div class="row" style="text-align: center;">
           <a target="_blank" href="{{news_item.link}}" class='btn btn-default'>Visit Site</a>
           <a href="{% url 'comment' news_item.id %}" class='btn btn-default'>Write a Review</a>
           <a href="{% url 'project' news_item.id %}" class='btn btn-default'>Review && Rate </a>

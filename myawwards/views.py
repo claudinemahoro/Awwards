@@ -31,3 +31,13 @@ def new_post(request):
         form = ProjectForm()
     return render(request, 'new_post.html', {"form": form})
 
+@login_required(login_url='/accounts/login/')
+def profile(request, username=None):
+	'''
+	Method that fetches a users profile page
+	'''
+	current_user = request.user
+	pi_images = Project.objects.filter(user=current_user)
+
+	return render(request,"profile.html",{"pi_images":pi_images})
+
